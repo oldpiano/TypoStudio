@@ -3,3 +3,67 @@ TS 시리즈 만들면서 필요한 것들
 준비물
 -------------------
 - Erica UIDevice Extension https://github.com/erica/uidevice-extension
+
+
+사용상 주의사항
+-------------------
+- strings 파일을 리스소에 포함시켜야 함
+
+
+예제
+-------------------
+
+@implementation tsProtectorPSettingsListController
+
+- (id)specifiers
+{
+	if (_specifiers == nil)
+    {
+		_specifiers = [[self loadSpecifiersFromPlistName:@"tsProtectorPSettings" target:self] retain];
+	}
+    
+	tsBugReporter *reporter = [tsBugReporter sharedReporter];
+	reporter.bundle = self.bundle;
+
+	return _specifiers;
+}
+
+- (void)showHelp:(PSSpecifier *)specifier
+{
+	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,0,0)];
+	webView.delegate = self;
+	webView.backgroundColor = [UIColor clearColor];
+	[[[[webView.subviews lastObject] subviews] lastObject] setBackgroundColor:[UIColor clearColor]];
+	
+	UIViewController *webViewController = [[UIViewController alloc] init];
+	webViewController.title = [specifier name];
+	webViewController.view.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:1.0f];
+	[webViewController.view addSubview:webView];
+	
+	UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:nil action:nil] autorelease];
+	webViewController.navigationItem.rightBarButtonItem = button;
+
+	tsBugReporter *reporter = [tsBugReporter sharedReporter];
+	reporter.barButton = button;
+	reporter.navigationController = (UINavigationController *)self;
+	reporter.webView = webView;
+	reporter.attachments = [NSArray arrayWithObject:tsProtectorLogPath];
+	
+	[self pushController:webViewController animate:YES];
+	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tsProtectorUsageURL]]];
+	
+	[webView release];
+	[webViewController release];
+}
+
+- (void)report:(PSSpecifier *)specifier
+{
+	tsBugReporter *reporter = [tsBugReporter sharedReporter];
+	reporter.webView = nil;
+	reporter.barButton = nil;
+	reporter.navigationController = (UINavigationController *)self;
+	reporter.attachments = [NSArray arrayWithObject:tsProtectorLogPath];
+	[reporter showMailComposer];
+}
+
+@end

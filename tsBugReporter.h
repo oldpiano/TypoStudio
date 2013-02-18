@@ -11,11 +11,20 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "../Erica/uidevice-extension/UIDevice-Hardware.h"
 
+// 받을 메일 주소
 #define tsBugReporterDevMail		@"typ0s2d10@gmail.com"
+// 임시 패키지 리스트 파일
 #define tsBugReporterLogFileDPKG	@"/var/mobile/Library/Logs/dpkgl.log"
 
+// 첨부할 크래쉬 리포트
 #ifndef tsBugReporterCrashReporter
 #define tsBugReporterCrashReporter	@"/var/mobile/Library/Logs/CrashReporter/LatestCrash.plist"
+#endif
+
+// 패키지 정보 - 메일제목에 씀
+#ifndef tsPacakgeTitle
+#define tsPacakgeTitle              @""
+#define tsPackageVersion            @"1.0"
 #endif
 
 
