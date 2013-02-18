@@ -1,0 +1,16 @@
+/* 
+  tsBugReporter.strings
+  TypoStudio
+
+  Created by 낡은피아노 on 12. 10. 18..
+  Copyright (c) 2012년 TypoStudio. All rights reserved.
+*/
+
+"OK" = "확인";
+"Cancel" = "취소";
+
+"Open via Safari" = "Safari 로 열기";
+"Bug Report" = "친절하게 문제점 알려주기";
+
+"Subject" = "%@ %@ 버그 리포팅";
+"Body" = "OS : %@ %@\nUDID : %@\n증상 : \n\n\n";

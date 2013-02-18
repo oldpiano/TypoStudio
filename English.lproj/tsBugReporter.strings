@@ -1,0 +1,16 @@
+/*
+ tsBugReporter.strings
+ TypoStudio
+ 
+ Created by 낡은피아노 on 12. 10. 18..
+ Copyright (c) 2012년 TypoStudio. All rights reserved.
+ */
+
+"OK" = "OK";
+"Cancel" = "Cancel";
+
+"Open via Safari" = "Open via Safari";
+"Bug Report" = "Report bugs kindly";
+
+"Subject" = "%@ %@ Bug Reporting";
+"Body" = "OS : %@ %@\nUDID : %@\nProblems : \n\n\n";
