@@ -1,3 +1,5 @@
+TS 시리즈 만들면서 필요한 것들
 
-준비물:
-	Erica UIDevice Extension https://github.com/erica/uidevice-extension
+준비물
+-------------------
+- Erica UIDevice Extension https://github.com/erica/uidevice-extension
